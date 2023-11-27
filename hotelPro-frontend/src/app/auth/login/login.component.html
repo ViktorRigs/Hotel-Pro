@@ -1,0 +1,27 @@
+<section class="white-bg">
+	<h2>Login:</h2>
+	<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+		<div>
+		<label>Email:</label>
+		<input type="text" id="email" formControlName="email" placeholder="Enter your Email" matTooltip="Имейл"
+			matTooltipPosition="right" />
+
+			<mat-error *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">
+                Email is required.
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')">
+                Invalid email format.
+            </mat-error>
+		</div>
+		<div>
+		<label>Password:</label>
+		<input type="password" id="password" formControlName="password" placeholder="Enter your Password"
+			matTooltip="парола" matTooltipPosition="right" />
+			<mat-error *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">
+                Password is required.
+            </mat-error>
+		</div>
+		<input type="submit" class="login" value="Login" [disabled]="!loginForm.valid" />
+	</form>
+
+</section>

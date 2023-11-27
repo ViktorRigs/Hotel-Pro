@@ -1,0 +1,38 @@
+<div class="big-div">
+    <div class="input-wrapper">
+        <mat-form-field class="search-input" subscriptSizing="dynamic">
+            <input class="custom" matInput placeholder="Search hotels by name or city" [(ngModel)]="searchQuery"
+                (input)="onSearch()" />
+            <button mat-button matSuffix (click)="onSearch()" class="search-icon">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+        <div class="sort-options">
+            <button (click)="setSortOption('name')">Sort by Name</button>
+            <button (click)="setSortOption('price')">Sort by Price</button>
+        </div>
+        <div class="sort-options">
+            <button (click)="exportHotels()">Export Hotels</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div *ngIf="hotels" class="added-hotels">
+    <div *ngFor="let hotel of filteredHotels.length ? filteredHotels : hotels" class="added-hotel"
+        (click)="navigateToDetails(hotel.id)">
+        <img class="picture-added-hotel" [src]="hotel.image" [alt]="hotel.name" />
+        <h3>{{ hotel.name }}</h3>
+        <div class="hotel-details">
+            <p>Price: ${{ hotel.price }} per night</p>
+            <p>Stars: {{ hotel.stars }} {{ '⭐'.repeat(hotel.stars ?? 0) }}</p>
+            <p>City: {{ hotel.address }}</p>
+            <p>Free rooms: {{ hotel.rooms || 19 }}</p>
+        </div>
+    </div>
+</div>
+<div *ngIf="!hotels" class="guest">
+    There are no hotels found...
+</div>

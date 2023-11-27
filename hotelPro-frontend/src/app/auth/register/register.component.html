@@ -1,0 +1,53 @@
+<section class="white-bg">
+    <h2>Register:</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div>
+        <label>Email:</label>
+        <input type="text" id="email" formControlName="email" placeholder="Enter your Email" matTooltip="Имейл"
+			matTooltipPosition="right" />
+            <mat-error *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')">
+                Email is required.
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')">
+                Invalid email format.
+            </mat-error>
+        </div>
+
+        <div>
+        <label>Password:</label>
+        <input type="password" id="password" formControlName="password" placeholder="Enter your Password"matTooltip="Парола"
+			matTooltipPosition="right" />
+            <mat-error *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')">
+                Password is required.
+            </mat-error>
+        </div>
+
+        <div>
+        <label>First Name:</label>
+        <input type="text" id="firstName" formControlName="firstName" placeholder="Enter your first name"matTooltip="Име"
+			matTooltipPosition="right" />
+            <mat-error *ngIf="registerForm.get('firstName')?.touched && registerForm?.get('firstName')?.hasError('required')">
+                Name is required.
+            </mat-error>
+        </div>
+
+        <div>
+        <label>Last Name:</label>
+        <input type="text" id="LastName" formControlName="lastName" placeholder="Enter your last name"matTooltip="Фамилия"
+			matTooltipPosition="right" />
+            <mat-error *ngIf="registerForm.get('lastName')?.touched && registerForm?.get('lastName')?.hasError('required')">
+                Last name is required.
+            </mat-error>
+        </div>
+
+
+        <div class="custom-checkbox">
+            <label for="isHotelOwner">I am a hotel owner</label>
+            <input type="checkbox" id="isHotelOwner" formControlName="isHotelOwner" matTooltip="Собственик на хотел"
+			matTooltipPosition="right"/>
+        </div>
+
+        <input type="submit" class="register" value="Register" [disabled]="!registerForm.valid" />
+    </form>
+</section>

@@ -1,0 +1,60 @@
+.big-div {
+    height: 8%;
+}
+.input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+.search-input {
+    border: 2px solid cornflowerblue;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 1px;
+    width: 40%;
+    height: 100%;
+    display: flex; /* Use flex to vertically center */
+    align-items: center; /* Vertically center the content */
+    justify-content: center;
+}
+.search-icon {
+    cursor: pointer;
+    color: #000000;
+}
+
+.search-icon:hover {
+    color: cornflowerblue;
+}
+
+.sort-options {
+	margin-left: 10px;
+    display: flex;
+    flex-direction: column; /* Display buttons in a column */
+    align-items: center; /* Center horizontally */
+}
+
+.sort-options button {
+    margin: 5px 0;
+    padding: 5px 10px;
+    background-color: cornflowerblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sort-options button:hover {
+    background-color: #357ABD; /* Change background color on hover */
+}
+
+ .mat-mdc-form-field-infix {
+    padding: 0;
+}
+
+.mdc-text-field {
+    align-items: center;
+}

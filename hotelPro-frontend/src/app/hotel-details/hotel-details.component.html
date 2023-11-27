@@ -1,0 +1,29 @@
+<section class="white-details">
+    <h2>Details</h2>
+    <div *ngIf="hotel" class="hotel-ticket">
+        <div class="hotel-left">
+            <img src="{{ hotel.image }}" alt="" />
+        </div>
+        <div *ngIf="hotel" class="hotel-right">
+            <div>
+                <h3>{{hotel.name}}</h3>
+                <p>{{ '⭐'.repeat(hotel.stars) }}</p>
+            </div>
+            <div>
+                Address: {{hotel.address}}
+            </div>
+            <p><span>Free rooms: {{hotel.rooms}}</span> </p>
+
+            <div class="hotel-right" *ngIf="loggedUser?.id == hotel.ownerId || loggedUser.role.name == 'admin'">
+                <a (click)="editHotel()" class="edit">Edit</a>
+                <a (click)="deleteHotel()" class="remove pointer">Delete</a>
+            </div>
+
+            <div class="hotel-right" *ngIf="loggedUser?.id != hotel.ownerId">
+                <a *ngIf="hasBookingForCurrentHotel()" class="green">You already have a room booked</a>
+                <a *ngIf="!hasBookingForCurrentHotel()" (click)="bookARoom()" class="book">Book a room</a>
+            </div>
+            <!-- TODO -->
+        </div>
+    </div>
+</section>

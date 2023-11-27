@@ -1,0 +1,23 @@
+<section class="white-bg">
+    <h2>Edit Info </h2>
+    <h3 *ngIf="loggedUser">Last updated at: {{ formatDate(loggedUser.updatedAt) }}</h3>
+    <div class="custom">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <label>First Name:</label>
+            <input type="text" formControlName="firstName" placeholder="" matTooltip="Име"
+                [value]="loggedUser?.firstName" matTooltipPosition="right" />
+            <label>Last Name:</label>
+            <input type="text" formControlName="lastName" placeholder="" matTooltip="Фамилия"
+                [value]="loggedUser?.lastName" matTooltipPosition="right" />
+            <label>Email:</label>
+            <input type="text" formControlName="email" placeholder="" matTooltip="Имейл" [value]="loggedUser?.email"
+                matTooltipPosition="right" />
+            <div class="custom">
+
+                <input type="submit" class="submit" value="Submit" [disabled]="!form.valid || form.pristine"
+                    matTooltip="Запази" matTooltipPosition="right" />
+            </div>
+        </form>
+    </div>
+</section>

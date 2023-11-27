@@ -1,0 +1,83 @@
+<section class="white-bg">
+    <h2>Edit existing hotel</h2>
+    <h3 *ngIf="hotel">Last updated at: {{ formatDate(hotel.updatedAt) }}</h3>
+    <div class="custom">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div>
+
+                <label>Hotel name:</label>
+                <input type="text" id="hotel" formControlName="name" placeholder="Hotel name" matTooltip="Име на хотела"
+                matTooltipPosition="right" />
+                <mat-error *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')">
+                    Name is required.
+                </mat-error>
+                
+            </div>
+                <div>
+    
+                    
+                    <label>City:</label>
+                    <input type="text" id="city" formControlName="address" placeholder="City" matTooltip="Адрес"
+                    matTooltipPosition="right" />
+                    <mat-error *ngIf="form.get('address')?.touched && form.get('address')?.hasError('required')">
+                        City is required.
+                    </mat-error>
+                </div>
+    
+    
+            <div>
+    
+                
+                <label>Free rooms:</label>
+                <input type="number" id="free-rooms" formControlName="rooms" placeholder="Free rooms" matTooltip="Стаи"
+                matTooltipPosition="right" />
+                <mat-error *ngIf="form.get('rooms')?.touched && form.get('rooms')?.hasError('required')">
+                    Rooms are required.
+                </mat-error>
+            </div>
+    
+    
+            <div>
+    
+                
+                <label>Price:</label>
+                <input type="number" formControlName="price" placeholder="Price" matTooltip="цена на стая"
+                matTooltipPosition="right" />
+                <mat-error *ngIf="form.get('price')?.touched && form.get('price')?.hasError('required')">
+                    Price is required.
+                </mat-error>
+            </div>
+    
+    
+            <div>
+    
+                
+                <label>Stars:</label>
+                <input type="number" formControlName="stars" placeholder="Price" matTooltip="звезди"
+                matTooltipPosition="right" />
+                <mat-error *ngIf="form.get('stars')?.touched && form.get('stars')?.hasError('required')">
+                    Stars are required.
+                </mat-error>
+            </div>
+    
+    
+            <div>
+    
+                
+                <label>Image:</label>
+                <input type="text" formControlName="image" placeholder="https://" matTooltip="Снимка"
+                matTooltipPosition="right" />
+                <mat-error *ngIf="form.get('image')?.touched && form.get('image')?.hasError('required')">
+                    An image is required.
+                </mat-error>
+            </div>
+
+            <div class="custom">
+
+                <input type="submit" class="submit" value="Submit" [disabled]="!form.valid || form.pristine"
+                    matTooltip="Запази" matTooltipPosition="right" />
+            </div>
+        </form>
+    </div>
+</section>

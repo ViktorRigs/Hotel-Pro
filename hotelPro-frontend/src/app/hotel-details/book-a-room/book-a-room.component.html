@@ -1,0 +1,27 @@
+<section class="white-bg">
+    <h2 *ngIf="hotel">Book a room in hotel {{ hotel.name }}</h2>
+    <h3 class="stars" *ngIf="hotel">{{ '⭐'.repeat(hotel.stars) }}</h3>
+    <div class="custom">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="checkInDate">Check-in Date</label>
+                    <input type="date" id="checkInDate" formControlName="checkInDate" placeholder="01.01.2023"
+                        matTooltip="Дата на настаняване" matTooltipPosition="below" />
+                </div>
+
+                <div class="form-group2">
+                    <label for="checkOutDate">Check-out Date</label>
+                    <input type="date" id="checkOutDate" formControlName="checkOutDate" placeholder="01.01.2023"
+                        matTooltip="Дата на напускане" matTooltipPosition="below" />
+                </div>
+            </div>
+
+            <div>
+                <input type="submit" class="submit" value="Submit" [disabled]="!form.valid" matTooltip="Запази"
+                    matTooltipPosition="below" />
+            </div>
+        </form>
+    </div>
+</section>

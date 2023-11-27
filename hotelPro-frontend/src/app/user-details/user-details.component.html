@@ -1,0 +1,35 @@
+<section>
+    <div class="profile">
+        <img src="assets/profile.png" alt="default user" />
+        <h3>User Info:</h3>
+        <div class="flex">
+            <p>Name: </p>
+            <p>{{loggedUser?.firstName}} {{loggedUser?.lastName}}</p>
+        </div>
+        <div class="flex">
+            <p>Email: </p>
+            <p>{{loggedUser.email}}</p>
+        </div>
+        <div class="flex">
+            <p>Created: </p>
+            <p>{{formatDate(loggedUser.createdAt)}}</p>
+        </div>
+        <div class="flex">
+            <p>Last Updated: </p>
+            <p>{{formatDate(loggedUser.updatedAt)}}</p>
+        </div>
+        <a (click)="redirectToEditUser()" class="edit">Edit Info</a>
+    </div>
+</section>
+<div *ngIf="loggedUser.role.name == 'owner'" class="added-hotels">
+    <div *ngFor="let hotel of hotels" class="addded-hotel" (click)="redirectToHotel(hotel.id)">
+        <img class="picture-added-hotel" [src]="hotel.image" [alt]="hotel.name" />
+        <h3>{{ hotel.name }}</h3>
+        <div class="hotel-details">
+            <p>Price: ${{ hotel.price }} per night</p>
+            <p>Stars: {{ hotel.stars }} {{ '⭐'.repeat(hotel.stars) }}</p>
+            <p>City: {{ hotel.address }}</p>
+            <p>Free rooms: {{ hotel.rooms || 19 }}</p>
+        </div>
+    </div>
+</div>

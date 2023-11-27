@@ -1,0 +1,17 @@
+<nav>
+    <div class="left-container">
+        <ul>
+            <li (click)="redirectToHome()"><a>Home</a></li>
+            <li *ngIf="loggedInUser?.role.id !== 3 && isAuthenticated" (click)="redirectToCreateHotel()"><a>Add a
+                    hotel +</a></li>
+            <li *ngIf="!isAuthenticated" (click)="redirectToLogin()"><a>Login</a></li>
+            <li *ngIf="!isAuthenticated" (click)="redirectToRegister()"><a>Register</a></li>
+        </ul>
+    </div>
+    <div (click)="redirectToHome()" class="title">Hotel Pro</div>
+
+    <div class="right-container" *ngIf="isAuthenticated">
+        <a (click)="redirectToProfile()" routerLink="/profile" class="log-out">{{loggedInUser?.firstName}}</a>
+        <a (click)="logOut()" class="log-out">Logout</a>
+    </div>
+</nav>
